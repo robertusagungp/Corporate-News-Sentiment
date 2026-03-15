@@ -49,3 +49,11 @@ CREATE TABLE IF NOT EXISTS article_watchlist_hits (
     created_at TIMESTAMP NOT NULL DEFAULT NOW(),
     UNIQUE(article_id, watchlist_id, matched_keyword)
 );
+CREATE INDEX IF NOT EXISTS idx_news_articles_content_hash
+    ON news_articles(content_hash);
+
+CREATE INDEX IF NOT EXISTS idx_article_watchlist_hits_article_id
+    ON article_watchlist_hits(article_id);
+
+CREATE INDEX IF NOT EXISTS idx_article_watchlist_hits_watchlist_id
+    ON article_watchlist_hits(watchlist_id);
